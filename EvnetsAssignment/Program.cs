@@ -47,7 +47,9 @@ namespace EventsAssignment
         public string LastName { get; set; }
 
         public Meals Meal { get; set; }
-                       
+
+        public event ChangeMealDelegate ChangeMealEvent;
+
         public void ChangeMeal(Meals meal)
         {
             switch(meal)
@@ -82,15 +84,14 @@ namespace EventsAssignment
                     break;
             }
         }
-        public event ChangeMealDelegate ChangeMealEvent;
+        
         public void TableIsOpenEventHandler(object sender, TableOpenEventArgs e)
         {
             Console.WriteLine("{0} {1} got a table.", this.FirstName, this.LastName);
         }
-
     }
 
-    class Program
+    public class Program
     {
         public static void ChangeMealEventHandler(object sender, ChangeMealEventArgs e)
         {
